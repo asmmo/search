@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <optional>
 
 template <typename T, template <typename E = T, typename Alloc = std::allocator<E>> typename Container = std::vector>
 std::optional<size_t> binarySearchHelper( const Container<T, std::allocator<T> > & array, T element, size_t begin, size_t end )
