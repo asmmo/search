@@ -7,20 +7,20 @@ std::optional<size_t> binarySearch( const Container<T, std::allocator<T> > & arr
 {
     int begin {};
     int end = array.size();
-    int center {(begin + end - 1) / 2};
+    int center;
 
     while( end - begin > 0){
-        if ( element < array[ center ]) {
-            end = center;
-            center = (begin + end - 1) / 2;
-        }
-        else if ( element > array[ center ]) {
-            begin = center + 1;
-            center = (begin + end - 1) / 2;
-        }
+        center = (begin + end - 1) / 2;
+        if ( element < array[ center ])  end = center;
+        else if ( element > array[ center ]) begin = center + 1;
         else return center;
 
     }
     return std::optional<size_t> {};
+}
 
+int main(){
+    std::vector vec { -7000, -1000, 7, 8};
+    std::optional<size_t > res{};
+    std::cout <<( (res = binarySearch(vec, -1000) ) ? std::to_string(res.value()) : "non");
 }
